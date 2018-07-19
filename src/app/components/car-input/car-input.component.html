@@ -1,0 +1,40 @@
+<form (submit)="addCar($event)">
+  <div class="row">
+    <div class="col xs-4">
+      <div class="form-group">
+        <label for="carName">Car name:</label>
+        <input id="carName"
+               class="form-control"
+               name="name"
+               [(ngModel)]="name">
+      </div>
+    </div>
+    <div class="col xs-4">
+      <div class="form-group">
+        <label for="carYear">Car year:</label>
+        <input id="carYear"
+               class="form-control"
+               name="year"
+               [(ngModel)]="year">
+      </div>
+    </div>
+    <div class="col xs-4">
+      <label for="carPrice">Car price:</label>
+      <input id="carPrice"
+             class="form-control"
+             name="price"
+             [(ngModel)]="price">
+    </div>
+  </div>
+  <button class="btn btn-block btn-warning"
+          [disabled]="!checkFields()"
+          *ngIf="!service.editing; else edit">
+    Add
+  </button>
+  <ng-template #edit>
+    <button class="btn btn-block btn-info"
+            [disabled]="!checkFields()">
+      Edit
+    </button>
+  </ng-template>
+</form>

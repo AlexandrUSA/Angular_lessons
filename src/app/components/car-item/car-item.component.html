@@ -1,0 +1,28 @@
+<div [ngClass]="getClass()">
+  <div>
+    <h5 class="mb-1">{{ item.name }}</h5>
+    <small>{{ item.year }}</small>
+    <br>
+    <small>{{ item.price | currency:'USD' }}</small>
+  </div>
+  <div class="actions">
+    <button class="btn btn-success"
+            *ngIf="!item.added; else cancel"
+            (click)="item.added = !item.added">
+      Buy
+    </button>
+    <ng-template #cancel>
+      <button class="btn btn-warning"
+              (click)="item.added = !item.added">
+        Cancel
+      </button>
+    </ng-template>
+    <button class="btn btn-primary"
+            [routerLink]="['/cars', item.id]">
+      Show
+    </button>
+    <button class="btn btn-danger">
+      Remove
+    </button>
+  </div>
+</div>

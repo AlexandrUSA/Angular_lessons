@@ -1,0 +1,96 @@
+<div class="container-fluid py-3">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card card-body">
+        <form (ngSubmit)="submitHandler()" #form="ngForm">
+          <h3 class="text-center mb-4">Sign-up</h3>
+          <!--<fieldset>-->
+            <div class="form-group">
+              <label for="email">
+                <b>Email:</b>
+              </label>
+              <input class="form-control input-lg"
+                     [ngClass]="{'is-invalid': isInvalid(email)}"
+                     id="email"
+                     placeholder="E-mail Address"
+                     type="email"
+                     email
+                     #email="ngModel"
+                     [ngModel]="defaultForm.email"
+                     name="email"
+                     required>
+              <div class="invalid-feedback"
+                   *ngIf="isInvalid(email)">
+                Invalid Email
+              </div>
+            </div>
+            <div class="form-group has-success">
+              <label for="password">
+                <b>Password:</b>
+              </label>
+              <input class="form-control input-lg"
+                     [ngClass]="{'is-invalid': isInvalid(password)}"
+                     placeholder="Password"
+                     id="password"
+                     type="password"
+                     #password="ngModel"
+                     ngModel
+                     name="password"
+                     required>
+              <div class="invalid-feedback"
+                   *ngIf="isInvalid(password)">
+                Invalid Password
+              </div>
+            </div>
+            <div class="form-group has-success">
+              <label for="password_confirm">
+                <b>Password confirm:</b>
+              </label>
+              <input class="form-control input-lg"
+                     [ngClass]="{'is-invalid': isInvalid(password_confirm, password)}"
+                     id="password_confirm"
+                     placeholder="Confirm Password"
+                     type="password"
+                     #password_confirm="ngModel"
+                     ngModel
+                     name="password_confirm"
+                     required>
+              <div class="invalid-feedback"
+                   *ngIf="isInvalid(password_confirm)">
+                Password and confirm does not mutch!
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="country">
+                <b>Select country:</b>
+              </label>
+              <select id="country"
+                      class="form-control input-lg"
+                      [ngClass]="{'is-invalid': isInvalid(country)}"
+                      [ngModel]="defaultForm.country"
+                      name="country"
+                      #country="ngModel"
+                      required>
+                <option value="USA">United States</option>
+                <option value="UK">United Kingdom</option>
+                <option value="CND">Canada</option>
+              </select>
+              <div class="invalid-feedback"
+                   *ngIf="isInvalid(country)">
+                Select country!
+              </div>
+            </div>
+            <input class="btn btn-lg btn-primary btn-block"
+                   value="Sign Me Up"
+                   type="submit"
+                   [disabled]="!form.valid || isInvalid(password_confirm, password)">
+            <input class="btn btn-lg btn-warning btn-block"
+                   value="Clear data"
+                   type="button"
+                   (click)="clearForm()">
+          <!--</fieldset>-->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

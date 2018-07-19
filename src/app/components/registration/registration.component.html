@@ -1,0 +1,82 @@
+<div class="container-fluid py-3">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card card-body">
+        <form [formGroup]="form"
+              (ngSubmit)="submitHandler()">
+          <h3 class="text-center mb-4">Sign-up</h3>
+          <!--<fieldset>-->
+            <div class="form-group">
+              <label for="email">
+                <b>Email:</b>
+              </label>
+              <input class="form-control input-lg"
+                     [ngClass]="{'is-invalid': isInvalid('email')}"
+                     id="email"
+                     placeholder="E-mail Address"
+                     type="email"
+                     email
+                     formControlName="email"
+                     required>
+              <div class="invalid-feedback">
+                Invalid Email
+              </div>
+            </div>
+            <div class="form-group has-success">
+              <label for="password">
+                <b>Password:</b>
+              </label>
+              <input class="form-control input-lg"
+                     [ngClass]="{'is-invalid': isInvalid('password')}"
+                     placeholder="Password"
+                     id="password"
+                     type="password"
+                     formControlName="password"
+                     required>
+              <div class="invalid-feedback">
+                Invalid Password
+              </div>
+            </div>
+            <div class="form-group has-success">
+              <label for="password_confirm">
+                <b>Password confirm:</b>
+              </label>
+              <input class="form-control input-lg"
+                     [ngClass]="{'is-invalid': isInvalid('password_confirm')}"
+                     id="password_confirm"
+                     placeholder="Confirm Password"
+                     type="password"
+                     formControlName="password_confirm"
+                     required>
+              <div class="invalid-feedback">
+                Password and confirm does not mutch!
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="country">
+                <b>Select country:</b>
+              </label>
+              <select id="country"
+                      class="form-control input-lg"
+                      formControlName="country"
+                      required>
+                <option value="USA">United States</option>
+                <option value="UK">United Kingdom</option>
+                <option value="CND">Canada</option>
+              </select>
+            </div>
+            <input class="btn btn-lg btn-primary btn-block"
+                   value="Sign Me Up"
+                   type="submit"
+                   [disabled]="!form.valid">
+            <input class="btn btn-lg btn-warning btn-block"
+                   value="Clear data"
+                   type="button">
+          <!-- Router link -->
+          <a routerLink="/cars" role="button" class="btn btn-outline-info btn-block">Go to cars list</a>
+          <!--</fieldset>-->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

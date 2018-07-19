@@ -1,0 +1,25 @@
+<app-header></app-header>
+
+<!--<app-car-input (newCar)="addCar($event)"></app-car-input>-->
+<app-car-input></app-car-input>
+<br>
+<label for="serach">Filter by name:</label>
+<input type="text"
+       name="search"
+       id="serach"
+       class="form-control"
+       *ngIf="service.cars.length > 0; else noData"
+       [(ngModel)]="search">
+<hr>
+<ng-template #noData>
+  <div class="alert alert-danger" role="alert">
+    No cars added...
+  </div>
+</ng-template>
+<div class="list-group">
+  <app-car-item *ngFor="let car of service.cars | carFilter:search:'name'"
+                [car]="car">
+  </app-car-item>
+</div>
+
+<app-basket [price]="getTotalPrice()" [inBasket]="basketCheck()"></app-basket>

@@ -1,0 +1,25 @@
+{
+  "cars": [
+    {
+      "id": 1,
+      "name": "Mazda",
+      "year": 2012,
+      "added": false,
+      "price": 3200
+    },
+    {
+      "id": 2,
+      "name": "BMW",
+      "year": 2018,
+      "added": false,
+      "price": "3000"
+    },
+    {
+      "id": 3,
+      "name": "Ford",
+      "year": 2018,
+      "added": false,
+      "price": "1200"
+    }
+  ]
+}
